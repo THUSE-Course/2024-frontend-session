@@ -299,7 +299,7 @@ Complex.printInfo(); // "This is a complex class."
 
 以下是一个 8x8 棋盘的简化示例，对于每一个红色的细胞，8 个黄色细胞称为其邻居：
 
-![Conway's Life Game Example](/0-neighbor.png)
+![Conway's Life Game Example](/1-neighbor.png)
 
 ---
 

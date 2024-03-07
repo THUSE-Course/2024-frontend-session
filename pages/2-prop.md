@@ -64,9 +64,8 @@ function f() {
 
 使用大括号嵌入将标签数组嵌入到某一容器中，此时数组中的所有标签会按照顺序成为该容器的子元素：
 
-```tsx {all} twoslash
-import React from 'react';
-// ---cut---
+````md magic-move twoslash
+```tsx {all}
 function f() {
     const arr = [
         <div key={1}> The element 1. </div>,
@@ -83,6 +82,21 @@ function f() {
     );
 }
 ```
+```tsx {all}
+function f() {
+    return (
+        <div className="container">
+            <div key={0}> The element 0. </div>
+            <div key={1}> The element 1. </div>
+            <div key={2}> The element 2. </div>
+            <div key={3}> The element 3. </div>
+            <div key={4}> The element 4. </div>
+        </div>
+    );
+}
+```
+
+````
 
 需要注意的是，必须为数组中的每一个元素提供一个唯一的 `key` 属性，以便 React 进行部分更新。
 
