@@ -60,3 +60,7 @@ src: pages/2-prop.md
 ---
 src: pages/3-state.md
 ---
+
+---
+src: pages/4-redux.md
+---
