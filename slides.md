@@ -3,7 +3,7 @@ theme: seriph
 background: https://images.unsplash.com/photo-1592678181951-27d869172a96?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 class: text-center
 highlighter: shiki
-lineNumbers: false
+lineNumbers: true
 drawings:
   persist: false
 defaults:
@@ -48,3 +48,9 @@ hideInToc: true
 ---
 src: pages/0-intro.md
 ---
+
+---
+src: pages/1-logic.md
+---
+
+

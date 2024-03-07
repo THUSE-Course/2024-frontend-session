@@ -74,7 +74,7 @@ backgroundSize: 40%
 ### Yarn
 
 - 一个更快、更安全、更可靠的包管理器
-- 与 npm 兼容，可以直接使用 npm 的项目配置文件
+- 兼容 npm，可直接使用 npm 的项目配置文件
 
 \* 你也可以选择使用其他包管理器，如 [pnpm](https://pnpm.io)
 
@@ -119,6 +119,8 @@ backgroundSize: 40%
 yarn global add typescript
 tsc -v
 ```
+
+你可以在 VSCode 中安装 [TypeScript 插件](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next) 以获得更好的开发体验
 
 ---
 
