@@ -1,0 +1,17 @@
+{
+  "name": "2024-frontend-session",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.48.0-beta.22",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "naive-ui": "^2.38.1",
+    "vue": "^3.4.21"
+  }
+}
