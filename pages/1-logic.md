@@ -299,7 +299,7 @@ Complex.printInfo(); // "This is a complex class."
 
 以下是一个 8x8 棋盘的简化示例，对于每一个红色的细胞，8 个黄色细胞称为其邻居：
 
-![Conway's Life Game Example](/neighbor.png)
+![Conway's Life Game Example](/0-neighbor.png)
 
 ---
 
@@ -319,6 +319,38 @@ Complex.printInfo(); // "This is a complex class."
 
 - 可以在 [康威生命游戏示例网站](https://playgameoflife.com/) 试玩以加深对规则的理解
   - 注意该网站所实现的棋盘是无限的，与本作业要求的并不一致，并且部分交互也与我们要求不同
+
+---
+
+## 上手实践
+
+在 `src/utils/logic.ts` 文件的函数 `stepBoard` 之中填充代码，完成康威生命游戏的核心逻辑
+
+```ts twoslash
+export type Board = (0 | 1)[][];
+// ---cut---
+export const stepBoard = (board: Board): Board => {
+    const newBoard: Board = [];
+
+    /**
+     * @todo [Step 1] 请在下面两条注释之间的区域填写你的代码完成该游戏的核心逻辑
+     * @note 你可以使用命令 yarn test step 来运行我们编写的单元测试与我们提供的参考实现对拍
+     */
+    // Step 1 BEGIN
+
+    // Step 1 END
+
+    return newBoard;
+};
+```
+
+代码量约为 20 - 40 行。
+
+完成后，你可以执行如下命令来测试你的代码：
+
+```bash
+yarn test step
+```
 
 ---
 
@@ -357,7 +389,6 @@ export const BOARD_LENGTH = 50;
 在 `src/utils/logic.ts` 文件的函数 `stepBoard` 之中填充代码，完成康威生命游戏的核心逻辑
 
 ```ts twoslash
-
 export type Board = (0 | 1)[][];
 // ---cut---
 export const stepBoard = (board: Board): Board => {

@@ -53,4 +53,6 @@ src: pages/0-intro.md
 src: pages/1-logic.md
 ---
 
-
+---
+src: pages/2-prop.md
+---
