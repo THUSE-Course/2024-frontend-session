@@ -30,11 +30,14 @@ jobs:
         with:
           node-version: 'lts/*'
 
+      - name: Install pnpm
+        run: pnpm install
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Install slidev
-        run:  npm i -g @slidev/cli
+        run:  pnpm i -g @slidev/cli
 
       - name: Build
         run: slidev build --base /frontend-session/
