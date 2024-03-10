@@ -62,5 +62,9 @@ src: pages/3-state.md
 ---
 
 ---
-src: pages/4-redux.md
+src: pages/3.5-router.md
+---
+
+---
+src: pages/4-effect.md
 ---

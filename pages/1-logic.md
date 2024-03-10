@@ -1,5 +1,7 @@
 # Step 1: TypeScript 初探与游戏逻辑
 
+<!-- Step 1 控制在 15 分钟左右解决 -->
+
 ## 目标
 
 - 掌握基本的 TypeScript 语法
@@ -7,7 +9,9 @@
 
 ---
 
-## 知识讲解
+## 语法 recap
+
+以下部分内容是 JS/TS 小作业中 Cheat Sheet 的真子集。
 
 ### 变量声明
 
@@ -26,7 +30,7 @@ val = "A string"
 
 <div v-click>
 
-当然，TypeScript 拥有强大的类型推断功能：
+当然，TypeScript 拥有强大的类型推断功能，可以省略部分类型标记：
 
 ```ts twoslash
 let youKnowIt = true;
@@ -37,56 +41,7 @@ youKnowIt = false;
 
 ---
 
-## 知识讲解
-
-### 变量声明
-
-TypeScript 中，字面量也可以作为类型，表示此类型的值只能取固定的字面量：
-
-```ts twoslash
-const oneValue = 1;
-```
-
-可以用 `|` 运算符实现联合类型，表示可以取其中任一类型的值：
-
-```ts twoslash
-const foo: number | string = "Maybe string";
-```
-
----
-
-## 知识讲解
-
-### 基本类型
-
-TypeScript 中，最常用的类型是 `number` 和 `string`。
-- `number`: 64 位浮点数类型
-  - TypeScript 中没有类似 C/C++ 语言中 `int` 的精确整数类型
-- `string`: 字符串
-  - 字面量可用 `'` 或 `"` 括起
-
-<div v-click>
-
-模板字符串用反引号标记，可用于将变量嵌入字符串：
-
-```ts twoslash
-const val = 233;
-const templateStr = `An example: ${val + 1}`
-```
-
-</div>
-
-<div v-click>
-
-此外，还存在两个特殊值：`undefined` 和 `null`。
-- `undefined` 表示值未定义/不存在
-- `null` 表示空值，类似于空指针的语义
-
-</div>
-
----
-
-## 知识讲解
+## 语法 recap
 
 ### 运算
 
@@ -107,7 +62,7 @@ const templateStr = `An example: ${val + 1}`
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### 控制流
 
@@ -126,7 +81,7 @@ for (let i = 0; i < 10; i++) {
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### 数组
 
@@ -153,7 +108,7 @@ const barfoo = {
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### 接口
 
@@ -179,7 +134,7 @@ const bad = {
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### `undefined`
 
@@ -207,7 +162,7 @@ x.toString();
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### 函数声明
 
@@ -227,7 +182,7 @@ sum2(2, 3); // 5
 
 ---
 
-## 知识讲解
+## 语法 recap
 
 ### 数组的常用方法
 
@@ -248,34 +203,6 @@ arr.filter(val => val % 2 === 0); // [2, 4]
 // 在尾部添加元素
 arr.push(6);
 arr; // [1, 2, 3, 4, 5, 6]
-```
-
----
-
-## 知识讲解
-
-### 面向对象
-
-TypeScript 对面向对象有一定的支持，语法与 C++ 类似。
-
-```ts twoslash
-class Complex {
-    private real: number;
-    private imaginary: number;
-    constructor(_real: number, _imaginary: number) {
-        this.real = _real;
-        this.imaginary = _imaginary; // Declare members & initialize
-    }
-    print() {
-        console.log(`${this.real} ${this.imaginary >= 0 ? "+" : "-"} ${Math.abs(this.imaginary)} i`);
-    }
-    static printInfo() {
-        console.log("This is a complex class.");
-    }
-}
-let com = new Complex(1, 2);
-com.print(); // "1 + 2 i"
-Complex.printInfo(); // "This is a complex class."
 ```
 
 ---
@@ -381,38 +308,6 @@ export const BOARD_LENGTH = 50;
 ```
 
 </div>
-
----
-
-## 上手实践
-
-在 `src/utils/logic.ts` 文件的函数 `stepBoard` 之中填充代码，完成康威生命游戏的核心逻辑
-
-```ts twoslash
-export type Board = (0 | 1)[][];
-// ---cut---
-export const stepBoard = (board: Board): Board => {
-    const newBoard: Board = [];
-
-    /**
-     * @todo [Step 1] 请在下面两条注释之间的区域填写你的代码完成该游戏的核心逻辑
-     * @note 你可以使用命令 yarn test step 来运行我们编写的单元测试与我们提供的参考实现对拍
-     */
-    // Step 1 BEGIN
-
-    // Step 1 END
-
-    return newBoard;
-};
-```
-
-代码量约为 20 - 40 行。
-
-完成后，你可以执行如下命令来测试你的代码：
-
-```bash
-yarn test step
-```
 
 ---
 

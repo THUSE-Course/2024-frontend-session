@@ -1,10 +1,44 @@
 # Step 2: 绘制游戏界面
 
+<!-- Step 0 控制在 20 分钟左右解决 -->
+
 ## 目标
 
 - 掌握 React 框架的基本使用
 - 学会使用属性传递参数
 - 编写完成康威生命游戏的界面
+
+---
+
+## 什么是组件化
+
+比如说用 HTML 写一堆尺寸相同、颜色不同的正方形，HTML 里面有关尺寸的设定完全就是重复的，有没有什么办法精简这些代码，保留最主要的颜色设定？
+
+````md magic-move two-slash
+```tsx {all}
+<div>
+    <div style="height: 10px; weight: 10px; backgroud-color: red"></div>
+    <div style="height: 10px; weight: 10px; backgroud-color: blue"></div>
+    <div style="height: 10px; weight: 10px; backgroud-color: white"></div>
+</div>
+```
+
+```tsx {all}
+// 注意，本代码仅供演示，并不符合语法
+const Square = <div style="height: 10px; weight: 10px; backgroud-color: {color}"></div>; 
+
+<div>
+    <Square color="red"></Square>
+    <Square color="blue"></Square>
+    <Square color="white"></Square>
+</div>
+```
+
+````
+
+<div v-click>
+React 的第一个主要思想就在于将网页中重复的成分抽离出来抽象为组件，提高代码效率。
+</div>
 
 ---
 
@@ -107,6 +141,7 @@ function f() {
 ### 函数组件
 
 函数组件本质上就是一个函数，的基本思路类似于一个渲染管道：
+
 - 其接受这个组件的**参数** (Properties, Props)，也就是一系列描述这个组件显示方式的键值对
 - 返回一个 TSX 标签，定义这个组件会怎么渲染到屏幕上
 
@@ -235,7 +270,7 @@ const BoardUI = (props: BoardUIProps) => {
 
 ---
 
-## 实验提示
+## 实验提示 & 代码说明
 
 - 标签 `<div>` 的 `style` 属性中，`flexDirection` 字段决定了子元素按照何种方式排列。
 
@@ -246,11 +281,6 @@ const BoardUI = (props: BoardUIProps) => {
     ```
 - 为了让 React 能够追踪一个列表之中各个元素的动态，需要在合适的地方添加 `key` 属性
   - 详细介绍可见 [React 官方文档](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)
-
----
-
-## 代码说明
-
 - `src/components/Square.tsx` 中包含一个 `Square` 组件，用于绘制一个长宽均为 16，边框为宽度为 1 的灰色实线的正方形，其背景色由属性中的 `color` 字段指定。你可以在完成本 Step 时引用该组件。
 - 组件 `BoardUI` 所接受的参数格式定义在接口 `BoardUIProps` 中，其中 `board` 字段记录了当前棋盘上每个细胞的状态。
 
