@@ -109,14 +109,14 @@ import React from 'react';
 import { useState } from 'react';
 // ---cut---
 const DemoComponent = () => {
-    const [isSent, setIsSent] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
-    return (
-        <div
-            onClick={() => setIsSent(true)}
-            style={{ /* Something */ }}
-        />
-    );
+  return (
+    <div
+      onClick={() => setIsSent(true)}
+      style={{ /* Something */ }}
+    />
+  );
 };
 ```
 
@@ -215,8 +215,8 @@ const Counter = () => {
 
 React 会在组件更新后的状态与更新前一致时，跳过对组件的重新渲染。
 
-- 对于数字、字符串等类型，React 会比较值是否相等。
-- 对于数组、对象等复杂类型，React 将检查引用的地址是否相等。
+- 对于数字、字符串等类型，React 会比较**值**是否相等。
+- 对于数组、对象等复杂类型，React 将检查**引用的地址**是否相等。
 
 这种行为可以优化性能，但有时会造成意外的组件不更新，请注意这一点。
 
@@ -242,9 +242,10 @@ const ref = useRef(/* Init Value */);
 ```tsx {*} twoslash
 import React from 'react';
 import { useRef } from 'react';
-const ref = useRef(undefined);
+const ref = useRef<{ bingo: 42 }>({ bingo: 42 });
+const someValue: { bingo: 42 } = { bingo: 42 };
 // ---cut---
-ref.current = undefined /* A new value */;
+ref.current = someValue /* A new value */;
 ```
 
 ---
@@ -261,7 +262,7 @@ backgroundSize: 100%
 
 受限于课时时间，我们不会在本次课程中详细讲解 Redux 等全局状态管理工具。你可以参考小作业中 `/redux` 目录下的各文件以及各组件中如何使用 `useSelector, useDispatch` Hook 来了解如何使用 Redux，将来应用在你的大作业中。
 
-<carbon-document />[Redux 官方中文文档](https://redux.js.org)
+<carbon-document />[Redux 官方中文文档](https://cn.redux.js.org)
 
 ---
 

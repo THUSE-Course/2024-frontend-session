@@ -168,13 +168,11 @@ export const request = async (
         const token = store.getState().auth.token;
         headers.append("Authorization", token);
     }
-
     const response = await fetch(url, {
         method,
         body: body && JSON.stringify(body),
         headers,
     });
-
     const data = await response.json();
 };
 ```
