@@ -17,15 +17,15 @@
 ````md magic-move two-slash
 ```tsx {all}
 <div>
-    <div style="height: 10px; weight: 10px; backgroud-color: red"></div>
-    <div style="height: 10px; weight: 10px; backgroud-color: blue"></div>
-    <div style="height: 10px; weight: 10px; backgroud-color: white"></div>
+    <div style="height: 10px; weight: 10px; background-color: red"></div>
+    <div style="height: 10px; weight: 10px; background-color: blue"></div>
+    <div style="height: 10px; weight: 10px; background-color: white"></div>
 </div>
 ```
 
 ```tsx {all}
 // 注意，本代码仅供演示，并不符合语法
-const Square = <div style="height: 10px; weight: 10px; backgroud-color: {color}"></div>; 
+const Square = <div style="height: 10px; weight: 10px; background-color: {color}"></div>; 
 
 <div>
     <Square color="red"></Square>
@@ -140,7 +140,7 @@ function f() {
 
 ### 函数组件
 
-函数组件本质上就是一个函数，的基本思路类似于一个渲染管道：
+函数组件本质上就是一个函数，它的基本思路类似于一个渲染管道：
 
 - 其接受这个组件的**参数** (Properties, Props)，也就是一系列描述这个组件显示方式的键值对
 - 返回一个 TSX 标签，定义这个组件会怎么渲染到屏幕上
