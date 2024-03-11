@@ -68,3 +68,16 @@ src: pages/3.5-router.md
 ---
 src: pages/4-effect.md
 ---
+
+---
+src: pages/a-ui.md
+---
+
+---
+layout: fact
+hideInToc: true
+---
+
+# Thanks for Listening
+
+Q&A?

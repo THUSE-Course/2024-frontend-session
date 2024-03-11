@@ -224,6 +224,28 @@ request(`/api/boards/${router.query.id}`, "GET", false)
 
 ## 上手实践
 
+从本 Step 开始，前后端需要对接使用，这里简单叙述如何在本地对接前后端。
+
+- 首先你需要一个已经完全完成的后端小作业，将其启动并监听某一个端口。
+- 之后，打开前端小作业的 `next.config.js` 文件，找到下述内容：
+
+    ```javascript
+    // ...
+    async rewrites() {
+        return [{
+            source: "/api/:path*",
+            destination: "http://127.0.0.1:8000/:path*",
+        }];
+    }
+    // ...
+    ```
+
+    将这里的 `8000` 修改为你的后端所监听的端口号即可。
+
+---
+
+## 上手实践
+
 在 `src/pages/list.tsx` 的组件 `ListScreen` 中，编写代码以删除游戏记录：
 
 ```tsx {*|32-36}{maxHeight:'80%'} twoslash
@@ -292,11 +314,15 @@ backgroundSize: 90%
 
 完成本 Step 后，目前的游戏应当能够删除游戏记录。
 
+> 如果你暂时还未完成先前的 Step，请运行如下命令切换到参考答案分支继续：
+>
+> ```bash
+> git switch step-4
+> ```
+
 ---
 
 ## 讲解
-
-在 `src/pages/login.tsx` 的组件 `LoginScreen` 中，在登录请求成功后的回调函数中发起将后端服务器所签发的 JWT 令牌存储到 Redux 的请求。
 
 ```tsx {*|32-46}{maxHeight:'80%'} twoslash
 import React, { useRouter } from "next/router";
