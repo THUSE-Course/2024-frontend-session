@@ -242,6 +242,8 @@ request(`/api/boards/${router.query.id}`, "GET", false)
 
     将这里的 `8000` 修改为你的后端所监听的端口号即可。
 
+> 如果你暂时还未完成后端小作业，可以运行后端小作业仓库的 `solution-example` 分支的参考实现。
+
 ---
 
 ## 上手实践
