@@ -1,17 +1,14 @@
-# Step 1: TypeScript 初探与游戏逻辑
+# TypeScript 语法
 
 <!-- Step 1 控制在 15 分钟左右解决 -->
 
 ## 目标
 
 - 掌握基本的 TypeScript 语法
-- 使用 TypeScript 语言编写完成康威生命游戏的核心逻辑
 
 ---
 
-## 语法 recap
-
-以下部分内容是 JS/TS 小作业中 Cheat Sheet 的真子集。
+## 语法
 
 ### 变量声明
 
@@ -41,7 +38,7 @@ youKnowIt = false;
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 运算
 
@@ -62,7 +59,7 @@ youKnowIt = false;
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 控制流
 
@@ -81,7 +78,7 @@ for (let i = 0; i < 10; i++) {
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 数组
 
@@ -108,7 +105,7 @@ const barfoo = {
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 接口
 
@@ -134,7 +131,7 @@ const bad = {
 
 ---
 
-## 语法 recap
+## 语法
 
 ### `undefined`
 
@@ -162,7 +159,7 @@ x.toString();
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 函数声明
 
@@ -182,7 +179,7 @@ sum2(2, 3); // 5
 
 ---
 
-## 语法 recap
+## 语法
 
 ### 数组的常用方法
 
@@ -213,161 +210,3 @@ arr; // [1, 2, 3, 4, 5, 6]
 
 - [TypeScript 官方文档](https://www.typescriptlang.org/docs/)
 - [TypeScript 语言基础 - 计算机系科协技能引导文档](https://docs.net9.org/languages/typescript/)
-
----
-
-## 游戏规则
-
-这一小节的实践中，我们将会完成康威生命游戏的核心逻辑，因此首先介绍康威生命游戏的规则。
-
-- 本作业中，我们使用一个 50x50 的棋盘，每个格子代表一个**细胞**。细胞具有**存活**和**死亡**两种状态。
-- 每个细胞在 $t + 1$ 时刻的状态取决于它自身在 $t$ 时刻的状态，以及其所有**邻居**在 $t$ 时刻的状态。
-- 每一个细胞都有 8 个邻居，这里由于棋盘大小有限，故采用循环相邻的定义方式。
-
-以下是一个 8x8 棋盘的简化示例，对于每一个红色的细胞，8 个黄色细胞称为其邻居：
-
-![Conway's Life Game Example](/1-neighbor.png)
-
----
-
-## 游戏规则
-
-基于上述定义，每个细胞在下一个时刻的状态按照下述规则确定：
-
-- 如果该细胞在这个时刻存活
-    - **（孤独死亡）** 如果其邻居中存活的个数不多于 1 个，则该细胞在下一时刻死亡
-    - **（人口超载）** 如果其邻居中存活的个数不少于 4 个，则该细胞在下一时刻死亡
-    - **（环境适中）** 如果其邻居中存活的个数为 2 个或者 3 个，则该细胞在下一时刻继续存活
-- 如果该细胞在这个时刻死亡
-    - **（细胞繁殖）** 如果其邻居中存活的个数为 3 个，则该细胞在下一时刻存活
-    - 其余情况下，该细胞保持死亡状态
-
-所有细胞从这个时刻按照上述规则变换为下一时刻的状态称为一次**演变 (step)**。
-
-- 可以在 [康威生命游戏示例网站](https://playgameoflife.com/) 试玩以加深对规则的理解
-  - 注意该网站所实现的棋盘是无限的，与本作业要求的并不一致，并且部分交互也与我们要求不同
-
----
-
-## 上手实践
-
-在 `src/utils/logic.ts` 文件的函数 `stepBoard` 之中填充代码，完成康威生命游戏的核心逻辑
-
-```ts twoslash
-export type Board = (0 | 1)[][];
-// ---cut---
-export const stepBoard = (board: Board): Board => {
-    const newBoard: Board = [];
-
-    /**
-     * @todo [Step 1] 请在下面两条注释之间的区域填写你的代码完成该游戏的核心逻辑
-     * @note 你可以使用命令 yarn test step 来运行我们编写的单元测试与我们提供的参考实现对拍
-     */
-    // Step 1 BEGIN
-
-    // Step 1 END
-
-    return newBoard;
-};
-```
-
-代码量约为 20 - 40 行。
-
-完成后，你可以执行如下命令来测试你的代码：
-
-```bash
-yarn test step
-```
-
----
-
-## 代码说明
-
-在 `src/utils/types.ts` 文件中，我们规定了表示棋盘的类型如下：
-
-```ts twoslash
-export type Board = (0 | 1)[][];
-```
-
-`export` 用于导出一个变量、函数、类型等，使之可以被其他文件引用。
-
-我们在此使用一个二维数组表示棋盘，每个元素代表一个细胞，取值为 `0` 或 `1`，分别代表细胞死亡与存活。
-
-<div v-click>
-
-你需要填充的 `stepBoard` 函数接受一个 `Board` 类型的参数 `board`，表示当前时刻的棋盘状态。该函数的返回值为 `Board` 类型，表示下一时刻的棋盘状态。
-
-</div>
-
-<div v-click>
-
-完成本步骤时，可以使用 `src/constants/constants.ts` 中定义的常量，如描述棋盘尺寸的常量：
-
-```ts twoslash
-export const BOARD_LENGTH = 50;
-```
-
-</div>
-
----
-
-## 讲解
-
-```ts {*|9-49|9-10|12-13|15-23|25-29|31-39|31-47|12-48|9-49|52|*}{maxHeight:'90%'} twoslash
-export type Board = (0 | 1)[][];
-export const BOARD_LENGTH = 50;
-// ---cut---
-export const stepBoard = (board: Board): Board => {
-    const newBoard: Board = [];
-
-    /**
-     * @todo [Step 1] 请在下面两条注释之间的区域填写你的代码完成该游戏的核心逻辑
-     * @note 你可以使用命令 yarn test step 来运行我们编写的单元测试与我们提供的参考实现对拍
-     */
-    // Step 1 BEGIN
-    for (let i = 0; i < BOARD_LENGTH; ++i) {
-        newBoard.push([]);
-
-        for (let j = 0; j < BOARD_LENGTH; ++j) {
-            let aliveCounter = 0;
-
-            const left = (j - 1 + BOARD_LENGTH) % BOARD_LENGTH;
-            const right = (j + 1) % BOARD_LENGTH;
-            const up = (i - 1 + BOARD_LENGTH) % BOARD_LENGTH;
-            const down = (i + 1) % BOARD_LENGTH;
-            const checkList = [
-                [up, left], [up, j], [up, right],
-                [i, left], [i, right],
-                [down, left], [down, j], [down, right],
-            ];
-
-            checkList.forEach((ord) => {
-                if (board[ord[0]][ord[1]] === 1) {
-                    ++aliveCounter;
-                }
-            });
-
-            const nowState = board[i][j];
-            if (nowState === 0) {
-                if (aliveCounter === 3) {
-                    newBoard[i].push(1);
-                }
-                else {
-                    newBoard[i].push(0);
-                }
-            }
-            else {
-                if (aliveCounter === 2 || aliveCounter === 3) {
-                    newBoard[i].push(1);
-                }
-                else {
-                    newBoard[i].push(0);
-                }
-            }
-        }
-    }
-    // Step 1 END
-
-    return newBoard;
-};
-```

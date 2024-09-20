@@ -1,4 +1,4 @@
-# Step 4: 副作用与网络请求
+# 副作用与网络请求
 
 <!-- Step 4 控制在 20 分钟讲解 + 15 分钟实践左右解决 -->
 
@@ -6,7 +6,6 @@
 
 - 掌握 JS/TS 语言的异步写法
 - 掌握 React 框架的 `useEffect` Hook
-- 对接前后端小作业，完成带有记录管理功能的康威生命游戏
 
 ---
 
@@ -163,15 +162,11 @@ export const request = async (
     needAuth: boolean,
     body?: object,
 ) => {
-    const headers = new Headers();
-    if (needAuth) {
-        const token = store.getState().auth.token;
-        headers.append("Authorization", token);
-    }
+    // ...
+    
     const response = await fetch(url, {
         method,
         body: body && JSON.stringify(body),
-        headers,
     });
     const data = await response.json();
 };
@@ -219,171 +214,3 @@ request(`/api/boards/${router.query.id}`, "GET", false)
 
 - JS 的 then 链不止有上述写法，但是这一写法已经足够完成大作业
 - 一定注意上述代码仅仅派遣了异步，不会阻塞式执行
-
----
-
-## 上手实践
-
-从本 Step 开始，前后端需要对接使用，这里简单叙述如何在本地对接前后端。
-
-- 首先你需要一个已经完全完成的后端小作业，将其启动并监听某一个端口。
-- 之后，打开前端小作业的 `next.config.js` 文件，找到下述内容：
-
-    ```javascript
-    // ...
-    async rewrites() {
-        return [{
-            source: "/api/:path*",
-            destination: "http://127.0.0.1:8000/:path*",
-        }];
-    }
-    // ...
-    ```
-
-    将这里的 `8000` 修改为你的后端所监听的端口号即可。
-
-> 如果你暂时还未完成后端小作业，可以运行后端小作业仓库的 `solution-example` 分支的参考实现。
-
----
-
-## 上手实践
-
-在 `src/pages/list.tsx` 的组件 `ListScreen` 中，编写代码以删除游戏记录：
-
-```tsx {*|32-36}{maxHeight:'80%'} twoslash
-import React, { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { DELETE_SUCCESS, FAILURE_PREFIX } from "../constants/string";
-const request = async (url: string, method: string, needAuth: boolean, body?: object) => ({ boards: [] });
-import { BoardMetaData } from "../utils/types";
-import { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
-// ---cut---
-const ListScreen = () => {
-    /**
-     * @todo [Step 4] 请在下述一处代码缺失部分填写合适的代码，完成网络请求的管理
-     */
-    const userName = useSelector((state: RootState) => state.auth.name);
-
-    const [refreshing, setRefreshing] = useState(true);
-    const [selectedUserName, setSelectedUserName] = useState<string | undefined>(undefined);
-    const [boardList, setBoardList] = useState<BoardMetaData[]>([]);
-
-    const router = useRouter();
-    const query = router.query;
-
-    useEffect(() => {
-        if (!router.isReady) {
-            return;
-        }
-
-        const name = router.query.name && decodeURIComponent(router.query.name as string);
-        setSelectedUserName(name);
-        fetchList(name);
-    }, [router, query]);
-
-    const fetchList = (name?: string) => {
-        setRefreshing(true);
-        request(name ? `/api/user/${name}` : "/api/boards", "GET", false)
-            .then((res) => setBoardList(res.boards))
-            .catch((err) => alert(FAILURE_PREFIX + err))
-            .finally(() => setRefreshing(false));
-    };
-
-    const deleteBoard = (id: number) => {
-        // Step 4 BEGIN
-
-        // Step 4 END
-    };
-
-    return <></>;
-};
-
-export default ListScreen;
-```
-
----
-layout: image-right
-image: /4-demo.gif
-backgroundSize: 90%
----
-
-## 上手实践
-
-在 `src/pages/list.tsx` 的组件 `ListScreen` 中，编写代码以删除游戏记录。
-
-本 Step 代码量在 20 行以内。
-
-完成本 Step 后，目前的游戏应当能够删除游戏记录。
-
-> 如果你暂时还未完成先前的 Step，请运行如下命令切换到参考答案分支继续：
->
-> ```bash
-> git switch step-4
-> ```
-
----
-
-## 讲解
-
-```tsx {*|32-46}{maxHeight:'80%'} twoslash
-import React, { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { DELETE_SUCCESS, FAILURE_PREFIX } from "../constants/string";
-const request = async (url: string, method: string, needAuth: boolean, body?: object) => ({ code: 0, info: "", boards: [] });
-import { BoardMetaData } from "../utils/types";
-import { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
-// ---cut---
-const ListScreen = () => {
-    /**
-     * @todo [Step 4] 请在下述一处代码缺失部分填写合适的代码，完成网络请求的管理
-     */
-    const userName = useSelector((state: RootState) => state.auth.name);
-
-    const [refreshing, setRefreshing] = useState(true);
-    const [selectedUserName, setSelectedUserName] = useState<string | undefined>(undefined);
-    const [boardList, setBoardList] = useState<BoardMetaData[]>([]);
-
-    const router = useRouter();
-    const query = router.query;
-
-    useEffect(() => {
-        if (!router.isReady) {
-            return;
-        }
-
-        const name = router.query.name && decodeURIComponent(router.query.name as string);
-        setSelectedUserName(name);
-        fetchList(name);
-    }, [router, query]);
-
-    const fetchList = (name?: string) => {
-        setRefreshing(true);
-        request(name ? `/api/user/${name}` : "/api/boards", "GET", false)
-            .then((res) => setBoardList(res.boards))
-            .catch((err) => alert(FAILURE_PREFIX + err))
-            .finally(() => setRefreshing(false));
-    };
-
-    const deleteBoard = (id: number) => {
-        // Step 4 BEGIN
-        setRefreshing(true);
-        request(`/api/boards/${id}`, "DELETE", true)
-            .then((res) => {
-                if (res.code === 0) {
-                    alert(DELETE_SUCCESS);
-                } else {
-                    alert(FAILURE_PREFIX + res.info);
-                }
-            })
-            .catch((err) => alert(FAILURE_PREFIX + err))
-            .finally(() => setRefreshing(false));
-        // Step 4 END
-    };
-
-    return <></>;
-};
-
-export default ListScreen;
-```

@@ -1,20 +1,10 @@
-# Step 0: 小作业简介 & 环境配置
+# 引言
 
 <!-- Step 0 控制在 10 分钟左右解决 -->
 
 - 使用基于 [TypeScript](https://www.typescriptlang.org) 语言的 [React](https://react.dev) ([Next.js](https://nextjs.org)) 框架实现 Web 前端
-- 与后端小作业中所完成的 Django 后端对接，完整构成一个带有记录管理功能的[康威生命游戏](https://zh.wikipedia.org/wiki/康威生命游戏)
 
 ![Conway's Game of Life](https://upload.wikimedia.org/wikipedia/commons/e/e6/Conways_game_of_life_breeder_animation.gif)
-
----
-
-## 检查课前准备
-
-- 请各位打开前端小作业，运行 `yarn dev` 命令启动，并在浏览器内打开网页
-- 如果无法启动（未完成课前准备部分）或者<del>不知道什么是前端小作业</del>，请就近寻找助教的帮助
-
-<!-- 这一部分几分钟检查一下各位的情况然后进入下一步，预计没有装好的人在少数，所以助教帮忙配环境和讲接下来的内容可以并行 -->
 
 ---
 
