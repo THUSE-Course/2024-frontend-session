@@ -30,19 +30,20 @@
 
 ---
 layout: image-right
-image: https://github.com/yarnpkg/assets/raw/master/yarn-kitten-full.png?raw=true
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Pnpm_logo.svg/220px-Pnpm_logo.svg.png
 backgroundSize: 40%
 ---
 
 ## 讲一些名词（包管理工具）
 
 - JavaScript 有着庞大的生态系统，有大量的第三方库可供使用
-- yarn 是本课程推荐使用的包管理工具
-  - npm 是 Node.js 默认包管理工具，但命令行输出不如 yarn 直观可读
+- pnpm 是本课程推荐使用的包管理工具
+  - npm 是 Node.js 默认包管理工具，yarn/pnpm 为基于此的优化版本
+- corepack 则是用来管理这些包管理工具的工具
 
 做个类比：
 
-- yarn/npm 之于 JavaScript，相当于 pip 之于 Python
+- npm/yarn/pnpm 之于 JavaScript，相当于 pip 之于 Python
 
 ---
 layout: image-right
