@@ -81,48 +81,40 @@ backgroundSize: 40%
 
 ---
 
-## Yarn 基本用法
+## pnpm 基本用法
 
 ```bash
 # 安装本项目依赖
-yarn install
+pnpm install
 # 添加名为 foo 的依赖
-yarn add foo
+pnpm add foo
 # 添加名为 foo 的开发依赖 (即在运行环境中不使用，例如测试框架)
-yarn add -D foo
+pnpm add -D foo
 # 移除名为 foo 的依赖
-yarn remove foo
+pnpm remove foo
 # 运行名为 dev 的脚本
-yarn dev
+pnpm dev
 ```
 
 ---
 
-## Yarn 基本用法
+## pnpm 基本用法
 
 ### 脚本
 
 在项目根目录下的 `package.json` 中的 `scripts` 字段中定义，例如本次小作业:
 
-```json {*|4-9|6-7|*}
+```json
 {
     "name": "conway-game",
-    // ...
+    "version": "0.1.0",
+    "private": true,
     "scripts": {
-        // ...
-        "dev": "next dev",
-        "fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+        "preinstall": "npx only-allow pnpm",
         // ...
     },
-    "dependencies": {
-        "@reduxjs/toolkit": "^1.9.5",
-        // ...
-    },
-    "devDependencies": {
-        "@testing-library/jest-dom": "^5.14.1",
-        // ...
-    }
+    "dependencies": { /* something */ },
+    "devDependencies": { /* something */ },
+    "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
 }
 ```
-
-其中 [ESLint](https://eslint.org) 为 JavaScript 代码检查工具，用于规范代码风格和发现代码错误

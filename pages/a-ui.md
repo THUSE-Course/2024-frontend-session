@@ -135,7 +135,7 @@ input[type=text]:focus {
 首先，我们需要通过包管理器安装组件库：
 
 ```bash
-yarn add antd
+pnpm add antd
 ```
 
 之后 `import` 组件库中的组件后，即可在 TSX 中使用：
