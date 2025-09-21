@@ -9,7 +9,7 @@ drawings:
 defaults:
   foo: true
 transition: slide-left
-title: Frontend Session - SE2025S
+title: Frontend Session - SE2025F
 mdc: true
 monaco: true
 monacoTypesSource: local # or cdn or none
@@ -27,7 +27,7 @@ hideInToc: true
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-document />
   </a>
-  <a href="https://git.tsinghua.edu.cn/se-2025spring/2025-next-hw" target="_blank" alt="GitLab Repo" title="Open in GitLab"
+  <a href="https://git.tsinghua.edu.cn/se-2025fall/2025-next-hw" target="_blank" alt="GitLab Repo" title="Open in GitLab"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-gitlab />
   </a>
